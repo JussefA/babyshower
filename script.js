@@ -66,9 +66,15 @@ form.addEventListener("submit", async (e) => {
 
     try {
 
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwFHWVSfDwKZSHAavU5R6zSp93Le7u3E11BHHpJS5zkrDJBIb2Wy4YX12fk2AF5V-ui/exec", {
+        await fetch("TU_URL_DE_GOOGLE_SCRIPT", {
 
             method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
 
             body: JSON.stringify(invitados)
 
@@ -80,7 +86,10 @@ form.addEventListener("submit", async (e) => {
 
     } catch (error) {
 
+        console.error(error);
+
         message.textContent = "Error al guardar";
     }
+
 
 });
