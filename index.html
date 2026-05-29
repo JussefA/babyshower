@@ -1,0 +1,70 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower Princesa</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>👑 Baby Shower 👑</h1>
+        <h2>Confirma tu asistencia</h2>
+
+        <form id="babyForm">
+
+            <div id="guestsContainer">
+
+                <div class="guest-card">
+
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+
+                    <input type="text" name="apellido" placeholder="Apellido" required>
+
+                    <div class="checkbox-group">
+
+                        <label>
+                            <input type="radio" name="asistencia_0" value="Asistiré" required>
+                            Asistiré ✨
+                        </label>
+
+                        <label>
+                            <input type="radio" name="asistencia_0" value="No asistiré">
+                            No asistiré
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button type="button" id="addGuest">
+                    Agregar otro
+                </button>
+
+                <button type="submit">
+                    Guardar
+                </button>
+
+            </div>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
