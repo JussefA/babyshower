@@ -1,150 +1,172 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
+margin: 0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
 
-    background: linear-gradient(
-        135deg,
-        #ffd6ec,
-        #ffe9f6,
-        #fff5fb
-    );
+background: linear-gradient(
+    135deg,
+    #ffd6ec,
+    #ffe9f6,
+    #fff5fb
+);
 
-    min-height: 100vh;
+min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
+
 }
 
 .container {
 
-    width: 90%;
-    max-width: 600px;
+width: 90%;
+max-width: 600px;
 
-    background: white;
+background: white;
 
-    padding: 40px;
+padding: 40px;
 
-    border-radius: 25px;
+border-radius: 25px;
 
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
 
-    border: 4px solid #f7c6e6;
+border: 4px solid #f7c6e6;
+
 }
 
 h1 {
-    text-align: center;
-    color: #d63384;
-    font-family: 'Princess Sofia', cursive;
-    font-size: 3rem;
-    margin-bottom: 10px;
+text-align: center;
+color: #d63384;
+font-family: 'Princess Sofia', cursive;
+font-size: 3rem;
+margin-bottom: 10px;
 }
 
 h2 {
-    text-align: center;
-    color: #ff69b4;
-    margin-bottom: 30px;
+text-align: center;
+color: #ff69b4;
+margin-bottom: 30px;
 }
 
 .guest-card {
 
-    background: #fff0f7;
+background: #fff0f7;
 
-    padding: 20px;
+padding: 20px;
 
-    border-radius: 20px;
+border-radius: 20px;
 
-    margin-bottom: 20px;
+margin-bottom: 20px;
 
-    border: 2px solid #ffd1e8;
+border: 2px solid #ffd1e8;
+
 }
 
 input[type="text"] {
 
-    width: 100%;
+width: 100%;
 
-    padding: 12px;
+padding: 12px;
 
-    margin-bottom: 15px;
+margin-bottom: 15px;
 
-    border-radius: 12px;
+border-radius: 12px;
 
-    border: 2px solid #ffc2df;
+border: 2px solid #ffc2df;
 
-    font-size: 1rem;
+font-size: 1rem;
 
-    box-sizing: border-box;
+box-sizing: border-box;
+
 }
 
 .checkbox-group {
 
-    display: flex;
+display: flex;
 
-    flex-direction: column;
+flex-direction: column;
 
-    gap: 10px;
+gap: 10px;
+
 }
 
 .checkbox-group label {
 
-    color: #c2185b;
+color: #c2185b;
 
-    font-weight: 600;
+font-weight: 600;
+
 }
 
 .buttons {
 
-    display: flex;
+display: flex;
 
-    justify-content: space-between;
+justify-content: space-between;
 
-    gap: 15px;
+gap: 15px;
 
-    margin-top: 20px;
+margin-top: 20px;
+
 }
 
 button {
 
-    flex: 1;
+flex: 1;
 
-    padding: 15px;
+padding: 15px;
 
-    border: none;
+border: none;
 
-    border-radius: 15px;
+border-radius: 15px;
 
-    background: linear-gradient(
-        135deg,
-        #ff85c2,
-        #ff5fa2
-    );
+background: linear-gradient(
+    135deg,
+    #ff85c2,
+    #ff5fa2
+);
 
-    color: white;
+color: white;
 
-    font-size: 1rem;
+font-size: 1rem;
 
-    font-weight: bold;
+font-weight: bold;
 
-    cursor: pointer;
+cursor: pointer;
 
-    transition: 0.3s;
+transition: 0.3s;
+
 }
 
 button:hover {
 
-    transform: scale(1.03);
+transform: scale(1.03);
 
-    opacity: 0.9;
+opacity: 0.9;
+
+}
+
+button:disabled {
+
+opacity: 0.6;
+
+cursor: not-allowed;
+
+transform: none;
+
 }
 
 #message {
 
-    margin-top: 20px;
+margin-top: 20px;
 
-    text-align: center;
+text-align: center;
 
-    font-weight: bold;
+font-weight: bold;
 
-    color: #d63384;
+color: #d63384;
+
+min-height: 30px;
+
 }
