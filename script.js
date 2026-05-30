@@ -8,88 +8,102 @@ let guestIndex = 1;
 // AGREGAR NUEVO INVITADO
 addGuestBtn.addEventListener("click", () => {
 
-    const guestCard = document.createElement("div");
+const guestCard = document.createElement("div");
 
-    guestCard.classList.add("guest-card");
+guestCard.classList.add("guest-card");
 
-    guestCard.innerHTML = `
-    
-        <input type="text" name="nombre" placeholder="Nombre" required>
+guestCard.innerHTML = `
 
-        <input type="text" name="apellido" placeholder="Apellido" required>
+    <input type="text" name="nombre" placeholder="Nombre" required>
 
-        <div class="checkbox-group">
+    <input type="text" name="apellido" placeholder="Apellido" required>
 
-            <label>
-                <input type="radio" name="asistencia_${guestIndex}" value="Asistiré" required>
-                Asistiré ✨
-            </label>
+    <div class="checkbox-group">
 
-            <label>
-                <input type="radio" name="asistencia_${guestIndex}" value="No asistiré">
-                No asistiré
-            </label>
+        <label>
+            <input type="radio" name="asistencia_${guestIndex}" value="Asistiré" required>
+            Asistiré ✨
+        </label>
 
-        </div>
-    `;
+        <label>
+            <input type="radio" name="asistencia_${guestIndex}" value="No asistiré">
+            No asistiré
+        </label>
 
-    guestsContainer.appendChild(guestCard);
+    </div>
+`;
 
-    guestIndex++;
+guestsContainer.appendChild(guestCard);
+
+guestIndex++;
 });
-
 
 // ENVIAR A GOOGLE SHEETS
 form.addEventListener("submit", async (e) => {
 
-    e.preventDefault();
+e.preventDefault();
 
-    const guestCards = document.querySelectorAll(".guest-card");
+const saveButton = document.querySelector('button[type="submit"]');
 
-    const invitados = [];
+// Evita múltiples clics
+saveButton.disabled = true;
+addGuestBtn.disabled = true;
 
-    guestCards.forEach(card => {
+saveButton.textContent = "Guardando...";
+message.textContent = "Guardando información, espere...";
 
-        const nombre = card.querySelector('input[name="nombre"]').value;
+const guestCards = document.querySelectorAll(".guest-card");
 
-        const apellido = card.querySelector('input[name="apellido"]').value;
+const invitados = [];
 
-        const asistencia = card.querySelector('input[type="radio"]:checked').value;
+guestCards.forEach(card => {
 
-        invitados.push({
-            nombre,
-            apellido,
-            asistencia
-        });
+    const nombre = card.querySelector('input[name="nombre"]').value;
+
+    const apellido = card.querySelector('input[name="apellido"]').value;
+
+    const asistencia = card.querySelector('input[type="radio"]:checked').value;
+
+    invitados.push({
+        nombre,
+        apellido,
+        asistencia
+    });
+
+});
+
+try {
+
+    await fetch("https://script.google.com/macros/s/AKfycbwFHWVSfDwKZSHAavU5R6zSp93Le7u3E11BHHpJS5zkrDJBIb2Wy4YX12fk2AF5V-ui/exec", {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(invitados)
 
     });
 
-    try {
+    // Pequeña pausa para dar tiempo a Apps Script
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-        await fetch("https://script.google.com/macros/s/AKfycbwFHWVSfDwKZSHAavU5R6zSp93Le7u3E11BHHpJS5zkrDJBIb2Wy4YX12fk2AF5V-ui/exec", {
+    message.textContent = "✨ Información guardada correctamente ✨";
 
-            method: "POST",
+    form.reset();
 
-            mode: "no-cors",
+} catch (error) {
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+    console.error(error);
 
-            body: JSON.stringify(invitados)
+    message.textContent = "❌ Error al guardar";
 
-        });
+    saveButton.disabled = false;
+    addGuestBtn.disabled = false;
 
-        message.textContent = "✨ Información guardada correctamente ✨";
-
-        form.reset();
-
-    } catch (error) {
-
-        console.error(error);
-
-        message.textContent = "Error al guardar";
-    }
-
-
+    saveButton.textContent = "Guardar";
+}
 });
