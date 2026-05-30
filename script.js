@@ -92,6 +92,7 @@ try {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     message.textContent = "✨ Información guardada correctamente ✨";
+    saveButton.textContent = "Guardado";
 
     form.reset();
 
