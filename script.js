@@ -72,6 +72,7 @@ guestCards.forEach(card => {
 
 });
 
+
 try {
 
     await fetch("https://script.google.com/macros/s/AKfycbwFHWVSfDwKZSHAavU5R6zSp93Le7u3E11BHHpJS5zkrDJBIb2Wy4YX12fk2AF5V-ui/exec", {
@@ -91,8 +92,9 @@ try {
     // Pequeña pausa para dar tiempo a Apps Script
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    message.textContent = "✨ Información guardada correctamente ✨";
     saveButton.textContent = "Guardado";
+
+    message.textContent = "✨ Información guardada correctamente ✨";
 
     form.reset();
 
@@ -100,7 +102,7 @@ try {
 
     console.error(error);
 
-    message.textContent = "❌ Error al guardar";
+    message.textContent = "Error al guardar";
 
     saveButton.disabled = false;
     addGuestBtn.disabled = false;
